@@ -32,11 +32,17 @@ btnGenMatrix.addEventListener('click', () => {
     // Instantiate Matrix A and Matrix B
     matrixA = new Matrix(ai, aj);
     matrixB = new Matrix(bi, bj);
+
+    //for checking
+    /*
+    const sumMatrix = Matrix.add(matrixA, matrixB);
+    sumMatrix.displayMatrix();
+     */
     alert(`Matrix A: ${matrixADimensions.value}\nMatrix B: ${matrixBDimensions.value}`);
 });
 
 // Validate the input format for matrix dimensions in the format "m,n"; m,n should be non-negative integers.
 const validateFormat = (valueInput) => {
-    const regex = /^\d+,\d+$/;
+    const regex = /^[1-9]\d*,[1-9]\d*$/;
     return regex.test(valueInput);
 }
