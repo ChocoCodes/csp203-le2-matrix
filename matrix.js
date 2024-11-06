@@ -15,24 +15,34 @@ class Matrix {
     }
     
     // NOTE: Embed the following methods in the Matrix class by making it static.
-    static add(A, B) {
+    static addOrSubtract(A, B, shouldAdd) {
 
         if (A.rows !== B.rows || A.cols !== B.cols) {
-            alert("Matrices must have the same dimensions for addition.");
+            alert("Matrices must have the same dimensions for this operation.");
             return;
         }
 
-        const sumMatrix = new Matrix(A.rows, A.cols);
-        for (let i = 0; i < sumMatrix.rows; i++) {
-            for (let j = 0; j < sumMatrix.cols; j++) {
-                sumMatrix.data[i][j] = A.data[i][j] + B.data[i][j];
+        const resultMatrix = new Matrix(A.rows, A.cols);
+        for (let i = 0; i < resultMatrix.rows; i++) {
+            for (let j = 0; j < resultMatrix.cols; j++) {
+                resultMatrix.data[i][j] = shouldAdd 
+                    ? A.data[i][j] + B.data[i][j] 
+                    : A.data[i][j] - B.data[i][j] ;
             }
         }
-        return sumMatrix;
+        return resultMatrix;
     }
-    // TODO: subtract(A,B)
     // TODO: multiply(A,B)
-    // TODO: transpose(A)
+
+    static transpose(A) {
+        const resultMatrix = new Matrix(A.cols, A.rows);
+        for (let i = 0; i < A.rows; i++) {
+            for (let j = 0; j < A.cols; j++) {
+                resultMatrix.data[j][i] = A.data[i][j];
+            }
+        }
+        return resultMatrix;
+    }
 }
 
 export default Matrix;
