@@ -10,30 +10,39 @@ class Matrix {
     }
     
     // Debug purposes only to display the matrix in console.
-    displayMatrix() {
+    displayMatrixConsole() {
         this.data.forEach(row => console.log(row));
     }
-    
-    // NOTE: Embed the following methods in the Matrix class by making it static.
-    static addOrSubtract(A, B, shouldAdd) {
 
-        if (A.rows !== B.rows || A.cols !== B.cols) {
+    // Check if both matrices are eligible for addition or subtraction.
+    static isSameDimension(A, B) {
+        return A.rows === B.rows && A.cols === B.cols;
+    }
+
+    // Check if both matrices are eligible for multiplication.
+    static isSameRowCol(A, B) {
+        return A.cols === B.rows;
+    }
+    
+    // Perform addition and subtraction operations on matrices A and B.
+    static addOrSubtract(A, B, shouldAdd) {
+        if (!isSameDimension(A, B)) {
             alert("Matrices must have the same dimensions for this operation.");
             return;
         }
-
         const resultMatrix = new Matrix(A.rows, A.cols);
         for (let i = 0; i < resultMatrix.rows; i++) {
             for (let j = 0; j < resultMatrix.cols; j++) {
                 resultMatrix.data[i][j] = shouldAdd 
                     ? A.data[i][j] + B.data[i][j] 
-                    : A.data[i][j] - B.data[i][j] ;
+                    : A.data[i][j] - B.data[i][j];
             }
         }
         return resultMatrix;
     }
     // TODO: multiply(A,B)
 
+    // Transpose of a Matrix A^T
     static transpose(A) {
         const resultMatrix = new Matrix(A.cols, A.rows);
         for (let i = 0; i < A.rows; i++) {
