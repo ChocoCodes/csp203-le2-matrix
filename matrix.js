@@ -6,12 +6,12 @@ class Matrix {
     constructor(rows, cols) {
         this.rows = rows;
         this.cols = cols;
-        this.data = Array.from({ length: rows }, () => Array.from({ length: cols }, () => 2));
+        this.data = Array.from({ length: rows }, () => Array.from({ length: cols }, () => 0));
     }
     
-    // Debug purposes only to display the matrix in console.
-    displayMatrixConsole() {
-        this.data.forEach(row => console.log(row));
+    // Debug purposes to display the matrix in console.
+    static displayMatrixConsole(matrix) {
+        matrix.data.forEach(row => console.log(row));
     }
 
     // Check if both matrices are eligible for addition or subtraction.
@@ -26,7 +26,7 @@ class Matrix {
     
     // Perform addition and subtraction operations on matrices A and B.
     static addOrSubtract(A, B, shouldAdd) {
-        if (!isSameDimension(A, B)) {
+        if (!Matrix.isSameDimension(A, B)) {
             alert("Matrices must have the same dimensions for this operation.");
             return;
         }
@@ -40,8 +40,25 @@ class Matrix {
         }
         return resultMatrix;
     }
-    // TODO: multiply(A,B)
 
+    // Perform standard matrix multiplication in O(n^3) time complexity
+    static multiply(A, B) {
+        const m = A.rows;
+        const n = A.cols;     
+        const p = B.cols;       
+
+        const C = new Matrix(A.rows, B.cols);
+
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < p; j++) {
+                for (let k = 0; k < n; k++) {
+                    C.data[i][j] += A.data[i][k] * B.data[k][j];
+                }
+            }
+        }
+        return C;
+    }
+    
     // Transpose of a Matrix A^T
     static transpose(A) {
         const resultMatrix = new Matrix(A.cols, A.rows);

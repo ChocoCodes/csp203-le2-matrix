@@ -4,6 +4,29 @@ import Matrix from './matrix.js';
     script.js will hold all Matrix related operations encapuslated in a class Matrix.
 */
 
+// Test Matrices for console only
+const testMatrixA = {
+    rows: 2,
+    cols: 2,
+    data: [
+        [1, 2],
+        [3, 4]
+    ]
+};
+const testMatrixB = {
+    rows: 2,
+    cols: 2,
+    data: [
+        [2, 5],
+        [8, 1]
+    ]
+};
+window.generateTest = () => {
+    const C = Matrix.multiply(testMatrixA, testMatrixB);
+    Matrix.displayMatrixConsole(C);
+    return;
+}
+
 const matrixADimensions = document.querySelector('.mxn-a');
 const matrixBDimensions = document.querySelector('.mxn-b');
 const btnGenMatrix = document.querySelector('.gen-matrix');
