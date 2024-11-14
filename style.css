@@ -35,6 +35,11 @@ body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar, 
+main::-webkit-scrollbar {
+    display: none;
+}
+
 .calculator-header {
     width: 100%;
     height: 90px;
@@ -123,6 +128,7 @@ main {
     background: rgba(0, 0, 0, 0.6) url(assets/hero-background.png) no-repeat center / cover;
     background-blend-mode: darken;
 }
+
 .hero-text-container {
     width: 645px;
     color: var(--white);
@@ -145,6 +151,24 @@ main {
     font-size: 28px;
     font-style: normal;
     font-weight: 300;
+    margin-bottom: 30px;
+}
+
+/* New Addition: Hero Button */
+.hero-text-container a {
+    text-decoration: none;
+    color: var(--white);
+    font: normal 400 1.5rem / normal var(--kanit);
+    background: var(--red);
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--white);
+}
+
+.hero-text-container a:hover {
+    background: var(--white);
+    color: var(--red);
+    border: 1px solid var(--red);
 }
 
 .red {
@@ -264,6 +288,7 @@ main {
     border: 1px solid var(--red);
     border-radius: 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dimension-gen button:hover {
