@@ -19,13 +19,24 @@
             <a class="nav-item" href="#about-us">About Us</a>
         </nav>
     </header>
-    <div class="container-dim-input">
-        <h4 class="guide-text">Enter dimensions row[m],col[n] for both Matrices A and B. <br>Only non-negative integers are allowed.</h4>
-        <input type="text" name="matrix-A" class="matrix mxn-a" placeholder="Matrix A m,n" autocomplete="off">
-        <input type="text" name="matrix-A" class="matrix mxn-b" placeholder="Matrix B m,n" autocomplete="off">
-        <button class="gen-matrix" onclick="generateMatrix()">Generate</button>
-    </div>
-    <button class="test-matrix" onclick="generateTest()">Test Results</button>
+    <main class="content">
+        <section class="input-fields">
+            <div class="dimension-gen">
+                <div class="matrix">
+                    <label for="matrixA" class="matrix-a">Enter dimension for Matrix A</label>
+                    <input type="text" class="dimension-input matrix-a" placeholder="m,n(row, column)" name="matrixA">
+                </div>
+                <button class="test-matrix" onclick="generateTest()">Create</button>
+                <div class="matrix">
+                    <label for="matrixB" class="matrix-b">Enter dimension for Matrix B</label>
+                    <input type="text" class="dimension-input matrix-b" placeholder="m,n(row, column)" name="matrixB">
+                </div>
+            </div>
+        </section>
+        <section class="result">
+            
+        </section>
+    </main>
     <!-- Last part of the body - wait for the content to load properly -->
     <script src="script.js" type="module"></script>
 </body>
