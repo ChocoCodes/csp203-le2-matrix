@@ -157,18 +157,18 @@ main {
 /* New Addition: Hero Button */
 .hero-text-container a {
     text-decoration: none;
-    color: var(--white);
     font: normal 400 1.5rem / normal var(--kanit);
-    background: var(--red);
-    padding: 10px 20px;
-    border-radius: 15px;
-    border: 1px solid var(--white);
-}
-
-.hero-text-container a:hover {
     background: var(--white);
     color: var(--red);
     border: 1px solid var(--red);
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-text-container a:hover {
+    background: var(--red);
+    color: var(--white);
 }
 
 .red {
