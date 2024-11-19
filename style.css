@@ -186,7 +186,7 @@ main {
     color: var(--gray);
 }
 
-.feature-header {
+.feature-header, .about-us-header {
     font-size: 3em;
     font-style: normal;
     font-weight: 500;
@@ -223,6 +223,28 @@ main {
     font-weight: 300;
 }
 
+.about-us {
+    width: 100vw;
+    height: 100vh;
+    background: var(--white);
+    color: var(--gray);
+    padding-top: 2em;
+}
+
+.about-us-header {
+    padding-bottom: 20px;
+}
+
+.about-us p {
+    color: var(--gray);
+    font-family: var(--kanit);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 35px; /* 116.667% */
+    margin-bottom: 1em;
+    max-width: 1300px;
+}
 
 .input-fields {
     width: 100vw;
