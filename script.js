@@ -21,6 +21,7 @@ const testMatrixB = {
         [8, 1]
     ]
 };
+
 window.generateTest = () => {
     const C = Matrix.multiply(testMatrixA, testMatrixB);
     Matrix.displayMatrixConsole(C);

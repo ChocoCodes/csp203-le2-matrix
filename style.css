@@ -44,16 +44,6 @@ main {
     background-image: url("assets/mesh-bg.png");
 }
 
-.calculator-header {
-    width: 100%;
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 0;
-    background-color: var(--red);
-}
-
 .container-logo {
     display: flex;
     justify-content: center;
@@ -291,85 +281,4 @@ main {
     width: 300px;
     height: 300px;
     object-fit: cover;
-}
-
-/* Matrix Calculator Styling */
-.input-fields {
-    width: 100vw;
-    height: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: url('assets/mesh-bg.png') lightgray 50% / cover no-repeat;
-}
-
-.dimension-gen {
-    padding-top: 4rem;
-    display: flex;
-    flex-direction: row;
-    gap: 4rem;
-    color: var(--white);
-}
-
-.matrix {
-    background: var(--red);
-    width: 28.4375rem;
-    height: 7.0625rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 10px;
-    font: 400 1.25rem/1.25rem var(--roboto);
-    padding: 0 2rem;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-
-.matrix input {
-    width: 20rem;
-    height: 2rem;
-    border-radius: 5px;
-    border-color: var(--text-gray);
-}
-
-.matrix input::placeholder {
-    font-family: var(--tex-gyre);
-    font-size: 1rem; 
-    padding: 0 3px;
-}
-
-.matrix input:focus {
-    outline: none;
-    padding: 0 5px; 
-    font-family: var(--roboto);
-}
-
-.dimension-gen button {
-    margin-top: 2rem;
-    padding: auto;
-    align-items: center;
-    text-align: center;
-    width: 5rem;
-    height: 3rem;
-    font: normal 400 1rem/normal var(--roboto);
-    background: var(--white);
-    color: var(--red);
-    border: 1px solid var(--red);
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dimension-gen button:hover {
-    background: var(--red);
-    color: var(--white);
-    border: 1px solid var(--white);
-}
-
-.result { 
-    background: var(--red);
-    width: 100vw;
-    height: 92rem;
 }

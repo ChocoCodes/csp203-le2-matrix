@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/TabIcon-MatrixLab.png" type="png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="matrix-styles.css">
     <title>MatrixLab | Calculator</title>
 </head>
 <body>
@@ -26,17 +26,46 @@
                     <label for="matrixA" class="matrix-a">Enter dimension for Matrix A</label>
                     <input type="text" class="dimension-input matrix-a" placeholder="m,n(row, column)" name="matrixA">
                 </div>
-                <button class="test-matrix" onclick="generateTest()">Create</button>
+                <button class="btn-gen" onclick="generateTest()">Create</button>
                 <div class="matrix">
                     <label for="matrixB" class="matrix-b">Enter dimension for Matrix B</label>
                     <input type="text" class="dimension-input matrix-b" placeholder="m,n(row, column)" name="matrixB">
                 </div>
             </div>
         </section>
+        <section class="matrix-operations">
+            <div class="matrix-btns">
+                <button>Reset</button>
+                <button id="transpose">A<sup>T</sup></button>
+            </div> 
+            <table id="container-mat-a" class="matrix-grid"></table>
+            <div class="matrix-arithmetic">
+                <button class="arithmetic">+</button>
+                <button class="arithmetic">*</button>
+                <button class="arithmetic">-</button>
+            </div>
+            <table id="container-mat-b" class="matrix-grid"></table>
+            <div class="matrix-btns">
+                <button>Reset</button>
+                <button id="transpose">B<sup>T</sup></button>
+            </div> 
+        </section>
         <section class="result">
-            
+            <div class="results-text">
+                <p>Calculation Results:</p>
+                <div class="format">
+                    <h3 class="matrix-operation">A + B</h3>
+                    <p>></p>
+                </div>
+            </div>
+            <table id="container-result" class="result-matrix matrix-grid"></table>
         </section>
     </main>
+    <footer>
+        <h3>based on the problem #11 from Discrete Structures Learning Evidence 2</h3>
+        <p>Developed by John Octavio | Jul Leo Javellana | Raean Tamayo</p>
+        <p>&copy 2024 tarps.tech</p>
+    </footer>
     <!-- Last part of the body - wait for the content to load properly -->
     <script src="script.js" type="module"></script>
 </body>
