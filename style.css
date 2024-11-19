@@ -253,12 +253,8 @@ main {
 
 .about-us p {
     color: var(--gray);
-    font-family: var(--kanit);
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 300;
+    font: normal 300 30px/35px var(--kanit);
     text-align: justify;
-    line-height: 35px; /* 116.667% */
     margin-bottom: 1em;
     max-width: 1300px;
 }
@@ -290,6 +286,13 @@ main {
 .team-member h3 {
     font-weight: 400;
 }
+
+.members{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
 /* Matrix Calculator Styling */
 .input-fields {
     width: 100vw;
