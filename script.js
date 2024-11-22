@@ -28,9 +28,9 @@ window.generateTest = () => {
     return;
 }
 
-const matrixADimensions = document.querySelector('.mxn-a');
-const matrixBDimensions = document.querySelector('.mxn-b');
-const btnGenMatrix = document.querySelector('.gen-matrix');
+const matrixADimensions = document.querySelector('#matrix-a');
+const matrixBDimensions = document.querySelector('#matrix-b');
+const btnGenMatrix = document.querySelector('.btn-gen');
 
 // Host variables for matrices A and B
 let matrixA, matrixB;
@@ -56,12 +56,9 @@ btnGenMatrix.addEventListener('click', () => {
     // Instantiate Matrix A and Matrix B
     matrixA = new Matrix(ai, aj);
     matrixB = new Matrix(bi, bj);
-
-    //for checking
-    /*
-    const sumMatrix = Matrix.add(matrixA, matrixB);
-    sumMatrix.displayMatrix();
-     */
+    // Generate Matrices A and B
+    generateMatrixFields(ai, aj, document.querySelector('#container-mat-a'));
+    generateMatrixFields(ai, aj, document.querySelector('#container-mat-b'));
     alert(`Matrix A: ${matrixADimensions.value}\nMatrix B: ${matrixBDimensions.value}`);
 });
 
@@ -69,4 +66,17 @@ btnGenMatrix.addEventListener('click', () => {
 const validateFormat = (valueInput) => {
     const regex = /^[1-9]\d*,[1-9]\d*$/;
     return regex.test(valueInput);
+}
+
+const generateMatrixFields = (row, col, matrix) => {
+    for(let i = 0; i < row; i++) {
+        let matrixRow = document.createElement('tr');
+        for(let j = 0; j < col; j++) {
+            let matrixCell = document.createElement('td'),
+                matrixInput = document.createElement('input');
+            matrixCell.appendChild(matrixInput);
+            matrixRow.appendChild(matrixCell);
+        }
+        matrix.appendChild(matrixRow);
+    }
 }

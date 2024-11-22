@@ -210,7 +210,9 @@ footer p {
 }
 
 .matrix-btns {
+    position: relative;
     gap: 10px;
+    margin-bottom: 18%;
 }
 
 .matrix-btns button {
