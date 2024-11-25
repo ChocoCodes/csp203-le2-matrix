@@ -148,6 +148,7 @@ footer p {
     height: 2rem;
     border-radius: 5px;
     border-color: var(--text-gray);
+    padding-left: 10px;
 }
 
 .matrix input::placeholder {
@@ -158,7 +159,6 @@ footer p {
 
 .matrix input:focus {
     outline: none;
-    padding: 0 5px; 
     font-family: var(--roboto);
 }
 
@@ -215,6 +215,10 @@ footer p {
     margin-bottom: 18%;
 }
 
+.matrix-arithmetic {
+    gap: 1rem;
+}
+
 .matrix-btns button {
     color: var(--red);
     font: normal 400 1rem/normal var(--roboto);
@@ -239,9 +243,10 @@ footer p {
     color: var(--white);
     border-radius: 0.625rem;
     font: normal 400 1rem/normal var(--roboto);
-    border: 1px solid var(--white);
+    border: 1px solid transparent ;
     background: var(--red);
     padding: 1rem 2rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .result { 
@@ -262,18 +267,28 @@ footer p {
     border: 1px solid var(--lightGray);
     background: var(--red);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.results-text p {
-    width: 22.375rem;
-    height: 11.8125rem;
-    font: normal 400 1.25rem/1.25rem var(--roboto);
+    
 }
 
 .format {
     display: flex;
     flex-direction: row;
-    width: 10rem;
+    width: 100%;
     height: 5rem;
     font: italic 400 3rem/normal var(--tex-gyre);
+    gap: 15px;
+}
+
+.arrow {
+    margin: 15px 0 0 8rem;
+    font: normal 700 2.75rem / normal var(--roboto);
+}
+
+.format > h3:first-of-type {
+    padding-left: 2rem;
+}
+
+.result-header {
+    font: normal 400 1.25rem/1.25rem var(--roboto);
+    padding: 1rem 2rem;
 }
