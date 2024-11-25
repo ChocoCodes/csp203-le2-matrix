@@ -24,19 +24,20 @@
             <div class="dimension-gen">
                 <div class="matrix">
                     <label for="matrixA" class="matrix-a">Enter dimension for Matrix A</label>
-                    <input type="text" id="matrix-a" class="dimension-input matrix-a" placeholder="m,n(row, column)" name="matrixA" autocomplete="off">
+                    <input type="text" id="matrix-a" class="dimension-input" placeholder="m,n (row, column)" name="matrixA" autocomplete="off">
                 </div>
-                <button class="btn-gen" onclick="generateTest()">Create</button>
+                <button class="btn-gen">Create</button>
                 <div class="matrix">
                     <label for="matrixB" class="matrix-b">Enter dimension for Matrix B</label>
-                    <input type="text" id="matrix-b" class="dimension-input matrix-b" placeholder="m,n(row, column)" name="matrixB" autocomplete="off">
+                    <input type="text" id="matrix-b" class="dimension-input" placeholder="m,n (row, column)" name="matrixB" autocomplete="off">
                 </div>
             </div>
         </section>
         <section class="matrix-operations">
             <div class="matrix-btns">
-                <button>Reset</button>
+                <button id="reset-a"">Reset</button>
                 <button id="transpose">A<sup>T</sup></button>
+                <button>Revert</button>
             </div> 
             <table id="container-mat-a" class="matrix-grid"></table>
             <div class="matrix-arithmetic">
@@ -46,8 +47,9 @@
             </div>
             <table id="container-mat-b" class="matrix-grid"></table>
             <div class="matrix-btns">
-                <button>Reset</button>
+                <button id="reset-b">Reset</button>
                 <button id="transpose">B<sup>T</sup></button>
+                <button>Revert</button>
             </div> 
         </section>
         <section class="result">
