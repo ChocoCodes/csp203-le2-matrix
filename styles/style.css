@@ -41,7 +41,7 @@ main::-webkit-scrollbar {
 }
 
 main {
-    background-image: url("assets/mesh-bg.png");
+    background-image: url("../assets/mesh-bg.png");
 }
 
 .container-logo {
@@ -127,7 +127,7 @@ main {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6) url(assets/hero-background.png) no-repeat center / cover;
+    background: rgba(0, 0, 0, 0.6) url('../assets/hero-background.png') no-repeat center / cover;
     background-blend-mode: darken;
 }
 

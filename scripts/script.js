@@ -14,6 +14,10 @@ const matrixBDimensions = document.querySelector('#matrix-b');
 const generateBtn = document.querySelector('.btn-gen');
 const matrixATbl = document.querySelector('#container-mat-a');
 const matrixBTbl = document.querySelector('#container-mat-b');
+const add = document.getElementById('add');
+const subtract = document.getElementById('subtract');
+const multiply = document.getElementById('multiply');
+const multiplyReverse = document.getElementById('multiply-reverse');
 // Host variables for matrices A and B, and a flag to check for generated matrices
 let matrixA, matrixB, hasGeneratedMatrices = false;
 
@@ -24,10 +28,10 @@ const setDisabled = (button) => {
     button.style.cursor = 'not-allowed';
 }
 
-// Disable button and change button style
+// Enable button and change button style
 const setEnabled = (button) => {
     button.disabled = false;
-    button.style.backgroundColor = '#BF0C34'; 
+    button.style.backgroundColor = 'var(--red)'; 
     button.style.cursor = 'default';
 }
 
@@ -43,10 +47,21 @@ const validateFormat = (valueInput) => {
     return regex.test(valueInput);
 }
 
+const validateMatrixData = (matrix) => {
+    for(let i = 0; i < matrix.getRows(); i++) {
+        for(let j = 0; j < matrix.getCols(); j++) {
+            if(isNaN(matrix.getData()[i][j])) return false;
+        }
+    }
+    return true;
+}
+
+// Reset the matrix fields and enable all buttons
 const resetMatrix = (matrix) => {
+    const opBtns = [generateBtn, add, subtract, multiply, multiplyReverse];
     while (matrix.rows.length > 0) { matrix.deleteRow(0); }
     hasGeneratedMatrices = false;
-    setEnabled(generateBtn);
+    opBtns.forEach(btn => setEnabled(btn));
     matrix.style.borderCollapse = 'separate';
     matrix.style.border = '1px solid var(--red)';
     matrix.style.borderRadius = '10px';
@@ -90,6 +105,9 @@ generateBtn.addEventListener('click', () => {
         collapseBorders(matrixATbl);
         collapseBorders(matrixBTbl);
     }
+
+    // Check what operations can be performed given the dimensions of the matrix
+    checkEligibility();
 });
 
 // Generate matrix fields based on the dimensions provided
@@ -108,6 +126,39 @@ const generateMatrixFields = (rows, cols, matrix) => {
     }
 }
 
+// Check for valid operations to be performed on the matrices
+const checkEligibility = () => {
+    if(!Matrix.isSameRowCol(matrixA, matrixB)) { 
+        setDisabled(multiply);
+    }
+    if(!Matrix.isSameRowCol(matrixB, matrixA)) { 
+        setDisabled(multiplyReverse);
+    }
+    if(!Matrix.isSameDimension(matrixA, matrixB)) { 
+        setDisabled(add);
+        setDisabled(subtract);
+    }
+    return;
+}
+
+const loadMatrixData = (matrix, table) => {
+    if(!validateMatrixData(matrix)) {
+        alert('Please enter valid numbers in the matrix fields.');
+        resetMatrix(table);
+        return;
+    }
+
+    let data = [];
+    for(let i = 0; i < matrix.getRows(); i++) {
+        let row = [];
+        for(let j = 0; j < matrix.getCols();j++) {
+            row.push(Number(table.rows[i].cells[j].children[0].value));
+        }
+        data.push(row);
+    }
+    matrix.setData(data);
+}
+
 document.getElementById('reset-a').addEventListener('click', () => {
     resetMatrix(matrixATbl);
     resetDimensionField(matrixADimensions);
@@ -116,4 +167,49 @@ document.getElementById('reset-a').addEventListener('click', () => {
 document.getElementById('reset-b').addEventListener('click', () => {
     resetMatrix(matrixBTbl);
     resetDimensionField(matrixBDimensions);
+});
+
+add.addEventListener('click', () => {
+    if (!hasGeneratedMatrices) {
+        alert('Matrices A and B must be generated first.');
+        return;
+    }
+    loadMatrixData(matrixA, matrixATbl);
+    loadMatrixData(matrixB, matrixBTbl);
+    const resultMatrix = Matrix.addOrSubtract(matrixA, matrixB, true);
+    Matrix.displayMatrixConsole(resultMatrix); // DBG
+});
+
+subtract.addEventListener('click', () => {
+    if(!hasGeneratedMatrices) {
+        alert('Matrices A and B must be generated first.');
+        return;
+    }
+    loadMatrixData(matrixA, matrixATbl);
+    loadMatrixData(matrixB, matrixBTbl);
+    const resultMatrix = Matrix.addOrSubtract(matrixA, matrixB, false);
+    Matrix.displayMatrixConsole(resultMatrix); // DBG
+});
+
+// FIXME
+multiply.addEventListener('click', () => {
+    if(!hasGeneratedMatrices) {
+        alert('Matrices A and B must be generated first.');
+        return;
+    }
+    loadMatrixData(matrixA, matrixATbl);
+    loadMatrixData(matrixB, matrixBTbl);
+    const resultMatrix = Matrix.multiply(matrixA, matrixB);
+    Matrix.displayMatrixConsole(resultMatrix); // DBG
+});
+
+multiplyReverse.addEventListener('click', () => {
+    if(!hasGeneratedMatrices) {
+        alert('Matrices A and B must be generated first.');
+        return;
+    }
+    loadMatrixData(matrixA, matrixATbl);
+    loadMatrixData(matrixB, matrixBTbl);
+    const resultMatrix = Matrix.multiply(matrixB, matrixA);
+    Matrix.displayMatrixConsole(resultMatrix); // DBG
 });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/TabIcon-MatrixLab.png" type="png">
-    <link rel="stylesheet" href="matrix-styles.css">
+    <link rel="stylesheet" href="styles/matrix-styles.css">
     <title>MatrixLab | Calculator</title>
 </head>
 <body>
@@ -37,28 +37,25 @@
             <div class="matrix-btns">
                 <button id="reset-a"">Reset</button>
                 <button id="transpose">A<sup>T</sup></button>
-                <button>Revert</button>
             </div> 
             <table id="container-mat-a" class="matrix-grid"></table>
             <div class="matrix-arithmetic">
-                <button class="arithmetic">+</button>
-                <button class="arithmetic">*</button>
-                <button class="arithmetic">-</button>
+                <button id="add" class="arithmetic">+</button>
+                <button id="subtract" class="arithmetic">-</button>
+                <button id="multiply" class="arithmetic">AB</button>
+                <button id="multiply-reverse" class="arithmetic">BA</button>
             </div>
             <table id="container-mat-b" class="matrix-grid"></table>
             <div class="matrix-btns">
                 <button id="reset-b">Reset</button>
                 <button id="transpose">B<sup>T</sup></button>
-                <button>Revert</button>
             </div> 
         </section>
         <section class="result">
             <div class="results-text">
                 <p class="result-header">Calculation Results:</p>
                 <div class="format">
-                    <h3 class="matrix-operation">A</h3>
-                    <h3 class="matrix-operation">+</h3>
-                    <h3 class="matrix-operation">B</h3>
+                    <h3 class="matrix-operation">C</h3>
                     <p class="arrow">></p>
                 </div>
             </div>
@@ -66,11 +63,11 @@
         </section>
     </main>
     <footer>
-        <h3>based on the problem #11 from Discrete Structures: Learning Evidence 2</h3>
+        <h3>Based on Problem 11 from Discrete Structures: Learning Evidence 2</h3>
         <p>Developed by John Octavio | Jul Leo Javellana | Raean Tamayo</p>
         <p>&copy 2024 tarps.tech</p>
     </footer>
     <!-- Last part of the body - wait for the content to load properly -->
-    <script src="script.js" type="module"></script>
+    <script src="scripts/script.js" type="module"></script>
 </body>
 </html>
