@@ -189,6 +189,11 @@ footer p {
     border: 1px solid var(--red);
 }
 
+.dimension-input:disabled {
+    background: var(--lightGray);
+    color: var(--gray);
+}
+
 .matrix-operations {
     display: flex;
     flex-direction: row;
@@ -287,6 +292,8 @@ footer p {
 }
 
 .result-cell {
+    border: 1px solid var(--red);
+    border-radius: 1rem;
     text-align: center;
     color: var(--gray);
     font: normal 400 1rem/normal var(--roboto);

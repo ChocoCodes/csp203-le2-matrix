@@ -71,6 +71,8 @@ const resetMatrix = (matrix) => {
 }
 
 const resetDimensionField = (input) => input.value = '';
+const disableInput = (input) => input.disabled = true;
+const enableInput = (input) => input.disabled = false;
 
 generateBtn.addEventListener('click', () => {
     // Extract Values from Input fields
@@ -104,9 +106,11 @@ generateBtn.addEventListener('click', () => {
     // Matrices has already been generated; disable the button
     hasGeneratedMatrices = true;
     if (hasGeneratedMatrices) {
+        const matrices = [matrixATbl, matrixBTbl];
+        const dimensions = [matrixADimensions, matrixBDimensions];
         setDisabled(generateBtn);
-        collapseBorders(matrixATbl);
-        collapseBorders(matrixBTbl);
+        matrices.forEach(matrix => collapseBorders(matrix));
+        dimensions.forEach(dimension => disableInput(dimension));
     }
 
     // Check what operations can be performed given the dimensions of the matrix
@@ -167,23 +171,26 @@ const displayResultMatrix = (C) => {
     let data = C.getData();
     for(let i = 0; i < C.getRows(); i++) {
         let matRow = tblC.insertRow();
-        matRow.classList.add('result-cell');
         for(let j = 0; j < C.getCols(); j++) {
             let matCell = matRow.insertCell();
-            matCell.textContent = data[i][j];
+            matCell.innerText = data[i][j];
+            matCell.classList.add('result-cell');
         }
         tblC.appendChild(matRow);
     }
+    collapseBorders(tblC);
 };
 
 document.getElementById('reset-a').addEventListener('click', () => {
     resetMatrix(matrixATbl);
     resetDimensionField(matrixADimensions);
+    enableInput(matrixADimensions);
 });
 
 document.getElementById('reset-b').addEventListener('click', () => {
     resetMatrix(matrixBTbl);
     resetDimensionField(matrixBDimensions);
+    enableInput(matrixBDimensions);
 });
 
 add.addEventListener('click', () => {
