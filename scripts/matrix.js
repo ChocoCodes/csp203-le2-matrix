@@ -50,10 +50,11 @@ class Matrix {
         const n = A.#cols;     
         const p = B.#cols;       
 
-        const C = new Matrix(A.rows, B.cols);
+        const C = new Matrix(A.#rows, B.#cols);
 
         for (let i = 0; i < m; i++) {
             for (let j = 0; j < p; j++) {
+                C.#data[i][j] = 0;
                 for (let k = 0; k < n; k++) {
                     C.#data[i][j] += A.#data[i][k] * B.#data[k][j];
                 }
@@ -64,7 +65,7 @@ class Matrix {
     
     // Transpose of a Matrix A^T
     static transpose(A) {
-        const resultMatrix = new Matrix(A.cols, A.rows);
+        const resultMatrix = new Matrix(A.#cols, A.#rows);
         for (let i = 0; i < A.#rows; i++) {
             for (let j = 0; j < A.#cols; j++) {
                 resultMatrix.#data[j][i] = A.#data[i][j];

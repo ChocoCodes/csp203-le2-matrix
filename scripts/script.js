@@ -14,10 +14,13 @@ const matrixBDimensions = document.querySelector('#matrix-b');
 const generateBtn = document.querySelector('.btn-gen');
 const matrixATbl = document.querySelector('#container-mat-a');
 const matrixBTbl = document.querySelector('#container-mat-b');
+const tblC = document.getElementById('container-result');
 const add = document.getElementById('add');
 const subtract = document.getElementById('subtract');
 const multiply = document.getElementById('multiply');
 const multiplyReverse = document.getElementById('multiply-reverse');
+const transposeA = document.getElementById('transpose-a');
+const transposeB = document.getElementById('transpose-b');
 // Host variables for matrices A and B, and a flag to check for generated matrices
 let matrixA, matrixB, hasGeneratedMatrices = false;
 
@@ -141,13 +144,13 @@ const checkEligibility = () => {
     return;
 }
 
+// Load Matrix Data to the Matrix Object
 const loadMatrixData = (matrix, table) => {
     if(!validateMatrixData(matrix)) {
         alert('Please enter valid numbers in the matrix fields.');
         resetMatrix(table);
         return;
     }
-
     let data = [];
     for(let i = 0; i < matrix.getRows(); i++) {
         let row = [];
@@ -158,6 +161,20 @@ const loadMatrixData = (matrix, table) => {
     }
     matrix.setData(data);
 }
+
+const displayResultMatrix = (C) => {
+    tblC.innerHTML = '';
+    let data = C.getData();
+    for(let i = 0; i < C.getRows(); i++) {
+        let matRow = tblC.insertRow();
+        matRow.classList.add('result-cell');
+        for(let j = 0; j < C.getCols(); j++) {
+            let matCell = matRow.insertCell();
+            matCell.textContent = data[i][j];
+        }
+        tblC.appendChild(matRow);
+    }
+};
 
 document.getElementById('reset-a').addEventListener('click', () => {
     resetMatrix(matrixATbl);
@@ -177,7 +194,7 @@ add.addEventListener('click', () => {
     loadMatrixData(matrixA, matrixATbl);
     loadMatrixData(matrixB, matrixBTbl);
     const resultMatrix = Matrix.addOrSubtract(matrixA, matrixB, true);
-    Matrix.displayMatrixConsole(resultMatrix); // DBG
+    displayResultMatrix(resultMatrix);
 });
 
 subtract.addEventListener('click', () => {
@@ -188,10 +205,29 @@ subtract.addEventListener('click', () => {
     loadMatrixData(matrixA, matrixATbl);
     loadMatrixData(matrixB, matrixBTbl);
     const resultMatrix = Matrix.addOrSubtract(matrixA, matrixB, false);
-    Matrix.displayMatrixConsole(resultMatrix); // DBG
+    displayResultMatrix(resultMatrix);
 });
 
-// FIXME
+transposeA.addEventListener('click', () => {
+    if(!hasGeneratedMatrices) {
+        alert('Matrices A and B must be generated first.');
+        return;
+    }
+    loadMatrixData(matrixA,matrixATbl);
+    const transposed = Matrix.transpose(matrixA);
+    displayResultMatrix(transposed);
+});
+
+transposeB.addEventListener('click', () => {
+    if(!hasGeneratedMatrices) {
+        alert('Matrices A and B must be generated first.');
+        return;
+    }
+    loadMatrixData(matrixB,matrixBTbl);
+    const transposed = Matrix.transpose(matrixB);
+    displayResultMatrix(transposed);
+});
+
 multiply.addEventListener('click', () => {
     if(!hasGeneratedMatrices) {
         alert('Matrices A and B must be generated first.');
@@ -200,7 +236,7 @@ multiply.addEventListener('click', () => {
     loadMatrixData(matrixA, matrixATbl);
     loadMatrixData(matrixB, matrixBTbl);
     const resultMatrix = Matrix.multiply(matrixA, matrixB);
-    Matrix.displayMatrixConsole(resultMatrix); // DBG
+    displayResultMatrix(resultMatrix);
 });
 
 multiplyReverse.addEventListener('click', () => {
@@ -211,5 +247,5 @@ multiplyReverse.addEventListener('click', () => {
     loadMatrixData(matrixA, matrixATbl);
     loadMatrixData(matrixB, matrixBTbl);
     const resultMatrix = Matrix.multiply(matrixB, matrixA);
-    Matrix.displayMatrixConsole(resultMatrix); // DBG
+    displayResultMatrix(resultMatrix);
 });
