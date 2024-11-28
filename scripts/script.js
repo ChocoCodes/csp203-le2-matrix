@@ -75,6 +75,7 @@ const disableInput = (input) => input.disabled = true;
 const enableInput = (input) => input.disabled = false;
 
 generateBtn.addEventListener('click', () => {
+    resetMatrix(tblC);
     // Extract Values from Input fields
     const matrixADim = matrixADimensions.value;
     const matrixBDim = matrixBDimensions.value;
@@ -179,6 +180,7 @@ const displayResultMatrix = (C) => {
         tblC.appendChild(matRow);
     }
     collapseBorders(tblC);
+    tblC.style.borderRadius = 0;
 };
 
 document.getElementById('reset-a').addEventListener('click', () => {
