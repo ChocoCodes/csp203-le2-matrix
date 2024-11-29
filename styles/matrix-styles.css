@@ -277,7 +277,7 @@ footer p {
     justify-content: center;
     padding: 6rem 0;
     gap: 20px;
-    background: var(--red);
+    /*background: var(--red);*/
     width: 100vw;
     height: 75vh;
     color: var(--white);
@@ -292,7 +292,7 @@ footer p {
 }
 
 .result-cell {
-    border: 3px solid var(--red);
+    border: 1px solid var(--red);
     border-radius: 1rem;
     text-align: center;
     color: var(--gray);
@@ -301,7 +301,7 @@ footer p {
 
 #container-result {
     table-layout: fixed;
-    border: 3px solid var(--dark-red);  
+    border: 1px solid var(--dark-red);  
 }
 
 .format {

@@ -237,7 +237,7 @@ main {
     padding-top: 2em;
 }
 
-.about-us-header, .team > h1 {
+.about-us-header, .team > h1  {
     padding-bottom: 20px;
 }
 
@@ -251,7 +251,9 @@ main {
 
 .team-container {
     display: inline-flex;
+    width: 100%;
     gap: 5.5rem;
+    justify-content: center;
     align-items: center;
 }
 
@@ -265,6 +267,12 @@ main {
 
 .team {
     height: 50vh;
+}
+
+.team-header {
+    text-align: center;
+    transform:scale(2);
+    margin-bottom: 40px;
 }
 
 .team-member {
