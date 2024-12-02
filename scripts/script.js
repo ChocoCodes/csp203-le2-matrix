@@ -185,12 +185,14 @@ const displayResultMatrix = (C) => {
 
 document.getElementById('reset-a').addEventListener('click', () => {
     resetMatrix(matrixATbl);
+    resetMatrix(tblC);
     resetDimensionField(matrixADimensions);
     enableInput(matrixADimensions);
 });
 
 document.getElementById('reset-b').addEventListener('click', () => {
     resetMatrix(matrixBTbl);
+    resetMatrix(tblC);
     resetDimensionField(matrixBDimensions);
     enableInput(matrixBDimensions);
 });
