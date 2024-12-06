@@ -241,6 +241,10 @@ main {
     padding-bottom: 20px;
 }
 
+.about-us-header, .feature-header {
+    padding-top: 50px;
+}
+
 .about-us p {
     color: var(--gray);
     font: normal 300 30px/35px var(--kanit);
